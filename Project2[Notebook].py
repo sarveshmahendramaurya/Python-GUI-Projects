@@ -1,5 +1,5 @@
-from tkinter import *
-from os import *
+import tkinter as tk
+import os
 
 global v
 style='Segoe UI'
@@ -19,6 +19,7 @@ def font_setting():
     Ntry2.config(font=(style, size))
 
 def File_setting():
+    global content
     with open(FileName.get(),'r+') as f:
         if(v.get()=="r"):
             content=f.read()
@@ -26,55 +27,58 @@ def File_setting():
         else:
             f.write(content)
 #---parent window---#
-root=Tk()
+root=tk.Tk()
 root.state('zoomed')
 
-Frame1=Frame(root)
-Frame1.pack(side=LEFT)
+Frame1=tk.Frame(root)
+Frame1.pack(side=tk.LEFT)
 
 #---File settings---#
-Label(Frame1,text="File Name").pack(side=TOP)
+ex=0
+ey=5
+ix=10
+iy=5
+"""padx=ex,pady=ey.ipadx=ix,ipady=iy"""
+tk.Label(Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈").pack(side=tk.TOP)
+tk.Label(Frame1,text="File Name").pack(side=tk.TOP)
 
-FileName=StringVar()
-Entry(Frame1,textvariable=FileName).pack(side=TOP)
+FileName=tk.StringVar()
+tk.Entry(Frame1,textvariable=FileName).pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
-v=StringVar()
-rb1lbl=Label(Frame1,text='Read')
-rb1lbl.pack()
-rb1=Radiobutton(Frame1, text='Read' ,textvariable=v, value="r")
-rb1.pack(side=TOP)
+v=tk.StringVar()
 
-rb2lbl=Label(Frame1,text='write')
-rb2lbl.pack()
-rb2=Radiobutton(Frame1, text='Write' ,textvariable=v, value="w")
-rb2.pack(side=TOP)
+rb1=tk.Radiobutton(Frame1, text='Read' ,variable=v, value="r")
+rb1.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
-ConfirnButton=Button(Frame1,text="Confirm",command=File_setting)
-ConfirnButton.pack(side=TOP)
+rb2=tk.Radiobutton(Frame1, text='Write' ,variable=v, value="w")
+rb2.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+
+ConfirnButton=tk.Button(Frame1,text="Confirm",command=File_setting)
+ConfirnButton.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 #---Font settings---#
-Label(Frame1,text="____________________________").pack(side=TOP)
+tk.Label(Frame1,text="________________________________").pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
-style_label=Label(Frame1,text="Font Style")
-style_label.pack(side=TOP)
-font_style=StringVar(value='Segoe UI')
-fntstyl=Entry(Frame1,textvariable=font_style)
-fntstyl.pack(side=TOP)
+style_label=tk.Label(Frame1,text="Font Style")
+style_label.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+font_style=tk.StringVar(value='Segoe UI')
+fntstyl=tk.Entry(Frame1,textvariable=font_style)
+fntstyl.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
-size_label=Label(Frame1,text="Font Size")
-size_label.pack(side=TOP)
-font_size=IntVar(value=15)
-fntsz=Spinbox(Frame1,from_=1,to=150,textvariable=font_size)
-fntsz.pack(side=TOP)
+size_label=tk.Label(Frame1,text="Font Size")
+size_label.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+font_size=tk.IntVar(value=15)
+fntsz=tk.Spinbox(Frame1,from_=1,to=150,textvariable=font_size)
+fntsz.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
-tryButton=Button(Frame1,text="Set Font Setting", font=('Segoe UI',10),command=font_setting)
-tryButton.pack(side=TOP)
-
+tryButton=tk.Button(Frame1,text="Set Font Setting", font=('Segoe UI',10),command=font_setting)
+tryButton.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+tk.Label(Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈").pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 #---canvas---#
-Frame2=Frame(root)
-Frame2.pack(side=LEFT,fill=BOTH,expand=True)
-Ntry2=Text(Frame2,font=(style ,size))
+Frame2=tk.Frame(root)
+Frame2.pack(side=tk.LEFT,fill=tk.BOTH,expand=True)
+Ntry2=tk.Text(Frame2,font=(style ,size))
 Ntry2.insert("1.0", "Hello students")
-Ntry2.pack(fill=BOTH,expand=True)
+Ntry2.pack(fill=tk.BOTH,expand=True)
 
 
 
