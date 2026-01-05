@@ -89,7 +89,7 @@ tk.Label(
 Frame2=tk.Frame(root)
 Frame2.pack(side=tk.LEFT,fill=tk.BOTH,expand=True)
 Ntry2=tk.Text(Frame2,font=(style ,size))
-Ntry2.insert("1.0", "Hello students")
+Ntry2.insert("1.0", "")
 Ntry2.pack(fill=tk.BOTH,expand=True)
 
 root.mainloop()
