@@ -20,12 +20,14 @@ def font_setting():
 
 def File_setting():
     global content
-    with open(FileName.get(),'r+') as f:
-        if(v.get()=="r"):
+    
+    if(v.get()=="r"):
+        with open(FileName.get(),'r') as f:
             content=f.read()
             Ntry2.insert('1.0',content)
-        else:
-            f.write(content)
+    else:
+        with open(FileName.get(),'w') as f:
+            f.write(Ntry2.get("1.0","end"))
 #---parent window---#
 root=tk.Tk()
 root.state('zoomed')
@@ -36,14 +38,20 @@ Frame1.pack(side=tk.LEFT)
 #---File settings---#
 ex=0
 ey=5
-ix=10
+ix=5
 iy=5
 """padx=ex,pady=ey.ipadx=ix,ipady=iy"""
-tk.Label(Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈").pack(side=tk.TOP)
-tk.Label(Frame1,text="File Name").pack(side=tk.TOP)
+tk.Label(
+    Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈"
+    ).pack(side=tk.TOP)
+tk.Label(
+    Frame1,text="File Name"
+    ).pack(side=tk.TOP)
 
-FileName=tk.StringVar()
-tk.Entry(Frame1,textvariable=FileName).pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+FileName=tk.StringVar(value="Project2[Notebook_demo_text].txt")
+tk.Entry(
+    Frame1,textvariable=FileName
+    ).pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
 v=tk.StringVar()
 
@@ -56,7 +64,9 @@ rb2.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 ConfirnButton=tk.Button(Frame1,text="Confirm",command=File_setting)
 ConfirnButton.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 #---Font settings---#
-tk.Label(Frame1,text="________________________________").pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+tk.Label(
+    Frame1,text="________________________________"
+    ).pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
 style_label=tk.Label(Frame1,text="Font Style")
 style_label.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
@@ -72,7 +82,9 @@ fntsz.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 
 tryButton=tk.Button(Frame1,text="Set Font Setting", font=('Segoe UI',10),command=font_setting)
 tryButton.pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
-tk.Label(Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈").pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
+tk.Label(
+    Frame1,text="◈◇◈◇◈◇◈◇◈◇◈◇◈◇◈"
+    ).pack(side=tk.TOP,padx=ex,pady=ey,ipadx=ix,ipady=iy)
 #---canvas---#
 Frame2=tk.Frame(root)
 Frame2.pack(side=tk.LEFT,fill=tk.BOTH,expand=True)
@@ -80,7 +92,7 @@ Ntry2=tk.Text(Frame2,font=(style ,size))
 Ntry2.insert("1.0", "Hello students")
 Ntry2.pack(fill=tk.BOTH,expand=True)
 
-
+root.mainloop()
 
 
 
