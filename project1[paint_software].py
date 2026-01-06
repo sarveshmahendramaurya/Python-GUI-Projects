@@ -96,7 +96,7 @@ def hexcode():
     global brush_color
     brush_color=text.get()
 clr_set=Button(Frame2,text='Set color', command=hexcode)
-eraser=Label(Frame2,text='Earaser',bg='white',fg='black')
+eraser=Label(Frame2,text='▰ Eraser',bg='white',fg='black')
 clrll=Button(Frame2, text="Clear All", bg='white', fg='black')
 
 
